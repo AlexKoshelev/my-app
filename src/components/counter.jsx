@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 const Counter = (props) => {
   const { value } = props;
+
   const formatValue = () => {
     return value === 0 ? "empty" : value;
   };
@@ -9,12 +10,6 @@ const Counter = (props) => {
     let classes = "badge m-2 ";
     classes += value === 0 ? "bg-warning" : "bg-primary";
     return classes;
-  };
-
-  const handleDecrement = () => {
-    console.log("handleDecrement");
-
-    /*     setValue((prevState) => prevState - 1); */
   };
 
   return (

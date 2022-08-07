@@ -4,15 +4,15 @@ import Counter from "./counter";
 const CountersList = () => {
   const initialState = [
     { id: 0, value: 0, name: "Ненужная вещь" },
-    { id: 1, value: 1, name: "Ложка" },
-    { id: 2, value: 2, name: "Вилка" },
-    { id: 3, value: 3, name: "Тарелка" },
-    { id: 4, value: 4, name: "Набор мнимализма" },
+    { id: 1, value: 0, name: "Ложка" },
+    { id: 2, value: 0, name: "Вилка" },
+    { id: 3, value: 0, name: "Тарелка" },
+    { id: 4, value: 0, name: "Набор мнимализма" },
   ];
 
   const [counters, setCounters] = useState(initialState);
   const handleDelete = (id) => {
-    const newCounters = counters.filter((c) => c.id != id);
+    const newCounters = counters.filter((c) => c.id !== id);
 
     setCounters(newCounters);
   };
@@ -20,18 +20,22 @@ const CountersList = () => {
     setCounters(initialState);
   };
   const handleIncrement = (id) => {
-    const newValue = counters.filter((c) =>
-      c.id != id ? c.value : (c.value = c.value + 1)
-    );
-    console.log(newValue);
-    setCounters(newValue);
+    const newCounters = counters.map((element) => {
+      if (element.id === id) {
+        element.value += 1;
+      }
+      return element;
+    });
+    setCounters(newCounters);
   };
   const handleDecrement = (id) => {
-    const newValue = counters.filter((c) =>
-      c.id != id ? c.value : (c.value = c.value - 1)
-    );
-    console.log(newValue);
-    setCounters(newValue);
+    const newCounters = counters.map((element) => {
+      if (element.id === id) {
+        element.value -= 1;
+      }
+      return element;
+    });
+    setCounters(newCounters);
   };
 
   return (
