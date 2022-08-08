@@ -31,7 +31,9 @@ const CountersList = () => {
   const handleDecrement = (id) => {
     const newCounters = counters.map((element) => {
       if (element.id === id) {
-        element.value -= 1;
+        if (element.value > 0) {
+          element.value -= 1;
+        }
       }
       return element;
     });
